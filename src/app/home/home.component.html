@@ -1,0 +1,41 @@
+  <h2 >{{ title }}  </h2>
+  <form>
+    <div class="form-group">
+      <label>Search price </label>
+    <input type="number" name="priceMax" [(ngModel)]="priceMax" class="form-control col-3">
+    </div>
+  </form>
+  <button class="btn btn-warning" (click)="showForm()">Add new Product</button>
+  <br>
+  <br>
+  <button class="btn btn-dark" (click)="getStat()"
+>Get stat </button>
+  <h1>{{ n }}</h1>
+  <br><br>
+  <app-form-product (eventSaveProduct)="pushProduct($event)" *ngIf="!hideForm"></app-form-product>
+  <div class="row">
+  <app-product *ngFor="let p of productlist; let i=index"
+               [product]="p"
+               (incrementEvent)="incrementLike($event)">
+
+  </app-product>
+   </div>
+  <!--<table class="table" >
+    <tr><th>id</th><th>title</th><th>price</th><th>Quantity</th><th>Like</th></tr>
+    <tbody *ngFor="let product of productlist; let i=index">
+    <tr *ngIf="product.price<priceMax || priceMax==null">
+      <td>{{product.id}}</td>
+      <td>{{product.title}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.quantity}}</td>
+      <td>{{product.like}}
+        <button (click)="incrementLike(i)">
+          like <3
+        </button></td>
+      <td>
+        <button [disabled]="product.quantity==0">Buy</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>-->
+
